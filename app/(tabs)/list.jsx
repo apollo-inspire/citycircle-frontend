@@ -8,22 +8,29 @@ const List = () => {
   return (
     <SafeAreaView className="bg-primary">
       <FlatList
-        data={[{ id: 1, title: "test 1" }, { id: 2, title: "test 2"  }, { id: 3, title: "test 3" },]}
+        className="mx-4"
+        data={[{ key: 1, name: "Donner", type: "Bookstore", open: "Open", languages: "Dutch, English & Other", city: "Rotterdam", district: "Stadscentrum"}, 
+        { key: 2, name: "Beest Boulders", type: "Bouldering", open: "Open", languages: "Dutch, English & Other", city: "Rotterdam", district: "Noord"}, 
+        { key: 3, name: "Dutch Pinball Museum", type: "Pinball", open: "Wed. 16:00", languages: "Dutch, English & Other", city: "Rotterdam", district: "Delfshaven"}, 
+        { key: 3, name: "Dutch Pinball Museum", type: "Pinball", open: "Wed. 16:00", languages: "Dutch, English & Other", city: "Rotterdam", district: "Delfshaven"},
+        { key: 3, name: "Dutch Pinball Museum", type: "Pinball", open: "Wed. 16:00", languages: "Dutch, English & Other", city: "Rotterdam", district: "Delfshaven"},
+        { key: 3, name: "Dutch Pinball Museum", type: "Pinball", open: "Wed. 16:00", languages: "Dutch, English & Other", city: "Rotterdam", district: "Delfshaven"},
+        { key: 3, name: "Dutch Pinball Museum", type: "Pinball", open: "Wed. 16:00", languages: "Dutch, English & Other", city: "Rotterdam", district: "Delfshaven"}]}
         keyExtractor={(item) => item.$id}
         renderItem={({ item }) => (
            <PlaceCard place={item}/>
         )}
         ListHeaderComponent={() => (
           <View>
-            <View className="my-6 px-4 space-y-6">
+            <View className="">
             </View>
             <SearchInput placeholder="Search for a place"/>
 
-            <View className="w-full flex-1 pt-5 pb-8">
+            {/* <View className="w-full flex-1 pt-5 pb-8">
                 <Text className="text-gray-50 text-lg font-regular mb-3"> 
                   Places
                 </Text>
-            </View>
+            </View> */}
           </View>
           
         )}

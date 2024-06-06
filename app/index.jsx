@@ -22,7 +22,7 @@ export default function App() {
             resizeMode="contain"
           />
           <View className="relative mt-5">
-            <Text className="text-3xl text-white font-bold text-center">Discover Endless Possibilities with <Text className="text-secondary-200">Aora</Text></Text>
+            <Text className="text-3xl text-white font-bold text-center">Discover Endless Possibilities with <Text className="text-secondary-200">City Circle</Text></Text>
           </View>
 
           <Text className="text-sm font-normal text-gray-50 mt-7 text-center">

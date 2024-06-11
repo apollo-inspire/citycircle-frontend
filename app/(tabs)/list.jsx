@@ -1,47 +1,32 @@
-import { View, Text, FlatList, Image } from 'react-native'
-import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import SearchInput from '../../components/SearchInput'
-import PlaceCard from '../../components/PlaceCard'
+import { View, FlatList, SafeAreaView } from 'react-native';
+import React from 'react';
+import SearchInput from '../../components/SearchInput';
+import PlaceCard from '../../components/PlaceCard';
+import placesData from '../../assets/data/places.json'; // Importing the JSON data
 
 const List = () => {
   return (
-    <SafeAreaView className="bg-primary">
+    <SafeAreaView style={{ flex: 1, backgroundColor: 'blue' }}>
       <FlatList
-        className="mx-4"
-        data={[{ key: 1, name: "Donner", type: "Bookstore", open: "Open", languages: "Dutch, English & Other", city: "Rotterdam", district: "Stadscentrum"}, 
-        { key: 2, name: "Beest Boulders", type: "Bouldering", open: "Open", languages: "Dutch, English & Other", city: "Rotterdam", district: "Noord"}, 
-        { key: 3, name: "Dutch Pinball Museum", type: "Pinball", open: "Wed. 16:00", languages: "Dutch, English & Other", city: "Rotterdam", district: "Delfshaven"}, 
-        { key: 3, name: "Dutch Pinball Museum", type: "Pinball", open: "Wed. 16:00", languages: "Dutch, English & Other", city: "Rotterdam", district: "Delfshaven"},
-        { key: 3, name: "Dutch Pinball Museum", type: "Pinball", open: "Wed. 16:00", languages: "Dutch, English & Other", city: "Rotterdam", district: "Delfshaven"},
-        { key: 3, name: "Dutch Pinball Museum", type: "Pinball", open: "Wed. 16:00", languages: "Dutch, English & Other", city: "Rotterdam", district: "Delfshaven"},
-        { key: 3, name: "Dutch Pinball Museum", type: "Pinball", open: "Wed. 16:00", languages: "Dutch, English & Other", city: "Rotterdam", district: "Delfshaven"}]}
-        keyExtractor={(item) => item.$id}
+        style={{ marginHorizontal: 8 }}
+        data={placesData} // Using the imported JSON data
+        keyExtractor={(item) => item.key.toString()}
         renderItem={({ item }) => (
-           <PlaceCard place={item}/>
+          <PlaceCard place={item} />
         )}
         ListHeaderComponent={() => (
           <View>
-            <View className="">
+            <View style={{ marginBottom: 10 }} />
+            <SearchInput placeholder="Search for a place" />
+            <View style={{ paddingTop: 5, paddingBottom: 8 }}>
+              {/* Optional: You can add your header here */}
+              {/* <Text style={{ color: 'white', fontSize: 20 }}>Places</Text> */}
             </View>
-            <SearchInput placeholder="Search for a place"/>
-
-            {/* <View className="w-full flex-1 pt-5 pb-8">
-                <Text className="text-gray-50 text-lg font-regular mb-3"> 
-                  Places
-                </Text>
-            </View> */}
           </View>
-          
         )}
       />
-      {/* <Text>List</Text> */}
-      
-
-
-
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default List
+export default List;

@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-import { StyleSheet, Touchable, TouchableOpacity, View, Text } from 'react-native';
+import MapView, { Marker, Callout, PROVIDER_GOOGLE } from 'react-native-maps';
+import { Alert, StyleSheet, Touchable, TouchableOpacity, View, Text } from 'react-native';
+import { markers } from '../../assets/data/markers';
+
 
 const INITIAL_REGION = {
   latitude: 51.9170825,
@@ -8,6 +10,15 @@ const INITIAL_REGION = {
   latitudeDelta: 0.1,
   longitudeDelta: 0.1
 }
+
+const onMarkerSelected = (marker: any) => {
+  Alert.alert(marker.name);
+};
+
+const calloutPressed = (ev: any) => {
+  console.log(ev);
+};
+
 
 export default function App() {
   const mapRef = useRef();
@@ -37,7 +48,22 @@ export default function App() {
       mapType="standard"
       // mapType="satellite"
       ref={mapRef}
-      />
+      >
+        {markers.map((marker, index) => (
+        <Marker
+          key={index}
+          title={marker.name}
+          coordinate={marker}
+          onPress={() => onMarkerSelected(marker)}
+        >
+          <Callout onPress={calloutPressed}>
+            <View style={{ padding: 10 }}>
+              <Text style={{ fontSize: 24 }}>Hello</Text>
+            </View>
+          </Callout>
+        </Marker>
+				))}
+      </MapView>
       <TouchableOpacity onPress={focusMap} className="p-4 bg-primary">
         <Text className="text-white font-bold">Test Place</Text>  
       </TouchableOpacity>
